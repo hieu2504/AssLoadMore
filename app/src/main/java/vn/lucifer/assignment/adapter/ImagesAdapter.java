@@ -1,7 +1,7 @@
 package vn.lucifer.assignment.adapter;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-import java.util.Locale;
 
+import vn.lucifer.assignment.activity.ImgViewsActivity;
 import vn.lucifer.assignment.R;
 import vn.lucifer.assignment.model.Photo;
 
@@ -76,6 +76,14 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesHold
       set.applyTo(holder.mContraintLayout);
         Glide.with(context).load(photoList.get(position).getUrlM()).into(holder.imgImages);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ImgViewsActivity.class);
+                intent.putExtra("position", position);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

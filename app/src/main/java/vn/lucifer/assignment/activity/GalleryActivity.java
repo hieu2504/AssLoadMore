@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,7 +18,7 @@ import vn.lucifer.assignment.R;
 import vn.lucifer.assignment.model.Example;
 import vn.lucifer.assignment.model.Gallery;
 
-public class MainActivity extends AppCompatActivity implements Callback<Example> {
+public class GalleryActivity extends AppCompatActivity implements Callback<Example> {
 
     private static final String USER_ID = "186996527@N05";
     private static final String KEY_TOKEN = "807d0a50c895734934d348ee3a46a012";
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements Callback<Example>
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gallery);
         rvGalleries = findViewById(R.id.rvGalleries);
 
         MyRetrofitBuilder.getInstance().
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Callback<Example>
     public void onResponse(Call<Example> call, Response<Example> response) {
         List<Gallery> galleryList=response.body().getGalleries().getGallery();
         rvGalleries.setHasFixedSize(true);
-        galleriesAdapter = new GalleriesAdapter(galleryList, MainActivity.this);
+        galleriesAdapter = new GalleriesAdapter(galleryList, GalleryActivity.this);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
 
         rvGalleries.setLayoutManager(staggeredGridLayoutManager);

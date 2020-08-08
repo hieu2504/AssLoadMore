@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,16 +37,12 @@ public class ImagesActivity extends AppCompatActivity {
 
     RecyclerView rvImages;
     ImagesAdapter imagesAdapter;
-  private StaggeredGridLayoutManager staggeredGridLayoutManager;
+    private StaggeredGridLayoutManager staggeredGridLayoutManager;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressBar progressBar;
-
     private int pages = 1;
     private int per_page=10;
-
-    List<Photo> photoList;
-
-
+    public static List<Photo> photoList;
     private EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
 
 
@@ -55,12 +52,9 @@ public class ImagesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_images);
         rvImages=findViewById(R.id.rvImages);
         swipeRefreshLayout=findViewById(R.id.srlRefesh);
-        //progressBar=findViewById(R.id.progressBar);
+        progressBar=findViewById(R.id.progressBar);
 
         RetrofitImages();
-
-
-
 
         setLayoutManager();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -68,7 +62,7 @@ public class ImagesActivity extends AppCompatActivity {
             public void onRefresh() {
 
                 pages=1;
-
+                progressBar.setVisibility(View.VISIBLE);
                 RetrofitImages();
 
                setLayoutManager();
@@ -77,8 +71,9 @@ public class ImagesActivity extends AppCompatActivity {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                         pages++;
-
+                        progressBar.setVisibility(View.VISIBLE);
                         RetrofitImages();
+
 
                     }
                 };
@@ -92,6 +87,7 @@ public class ImagesActivity extends AppCompatActivity {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 pages++;
 
+                progressBar.setVisibility(View.VISIBLE);
                 RetrofitImages();
 
             }
@@ -106,7 +102,7 @@ public class ImagesActivity extends AppCompatActivity {
         Bundle  bundle = intent.getExtras();
         String galleryid = bundle.getString("galleryid");
         MyRetrofitBuilder.getInstance().
-                getListImages(KEY_TOKEN, galleryid, FULL_EXTRAS, "1", "json", GET_IMAGES,pages,8)
+                getListImages(KEY_TOKEN, galleryid, FULL_EXTRAS, "1", "json", GET_IMAGES,pages,10)
                 .enqueue(new Callback<ImgExample>() {
                     @Override
                     public void onResponse(Call<ImgExample> call, Response<ImgExample> response) {
@@ -118,7 +114,7 @@ public class ImagesActivity extends AppCompatActivity {
                         if (photoList.size() == 0) {
                             rvImages.addOnScrollListener(null);
                         }
-
+                        progressBar.setVisibility(View.GONE);
                     }
 
                     @Override
