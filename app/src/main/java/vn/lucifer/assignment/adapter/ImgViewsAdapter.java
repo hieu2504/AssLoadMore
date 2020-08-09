@@ -1,6 +1,5 @@
-package vn.lucifer.assignment;
+package vn.lucifer.assignment.adapter;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.List;
 
-import vn.lucifer.assignment.adapter.ImagesAdapter;
+import vn.lucifer.assignment.fragment.ImgViewsFragment;
 import vn.lucifer.assignment.model.Photo;
 
 public class ImgViewsAdapter extends FragmentStatePagerAdapter {
@@ -26,7 +25,6 @@ public class ImgViewsAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         ImgViewsFragment imgViewsFragment=new ImgViewsFragment();
         Bundle bundle=new Bundle();
-        ;
         bundle.putString("mess","Hello "+photoList.get(position).getTitle());
         bundle.putString("url",photoList.get(position).getUrlM());
         imgViewsFragment.setArguments(bundle);

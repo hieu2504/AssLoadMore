@@ -1,4 +1,4 @@
-package vn.lucifer.assignment;
+package vn.lucifer.assignment.fragment;
 
 import android.os.Bundle;
 
@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.github.chrisbanes.photoview.PhotoView;
+
+import vn.lucifer.assignment.R;
 
 
 public class ImgViewsFragment extends Fragment {
 private TextView textView;
-private ImageView imageView;
+private PhotoView imageView;
     public ImgViewsFragment() {
         // Required empty public constructor
     }
@@ -27,14 +30,13 @@ private ImageView imageView;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_img_views, container, false);
-        textView=view.findViewById(R.id.tvImgViews);
         imageView=view.findViewById(R.id.imgViews);
-        String mess=getArguments().getString("mess");
+
         String url=getArguments().getString("url");
         Glide.with(getActivity()).load(url).into(imageView);
 
 
-        textView.setText(mess);
+
         return view;
     }
 }

@@ -10,11 +10,11 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mContraintLayout"
+        android:id="@+id/mContraintLayoutF"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
-            android:id="@+id/imgImages"
+            android:id="@+id/imgF"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="center"
@@ -36,7 +36,7 @@
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
-            android:id="@+id/tvTitleimg"
+            android:id="@+id/tvTitleF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -50,6 +50,6 @@
             app:layout_constraintStart_toEndOf="@+id/eye" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    
+
 
 </androidx.cardview.widget.CardView>

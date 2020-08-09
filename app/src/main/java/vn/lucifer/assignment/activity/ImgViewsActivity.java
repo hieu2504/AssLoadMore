@@ -8,9 +8,10 @@ import android.os.Bundle;
 
 import java.util.List;
 
-import vn.lucifer.assignment.ImgViewsAdapter;
+import vn.lucifer.assignment.adapter.ImgViewsAdapter;
 import vn.lucifer.assignment.R;
 import vn.lucifer.assignment.model.Photo;
+import vn.lucifer.assignment.model.ZoomOutPageTransformer;
 
 public class ImgViewsActivity extends AppCompatActivity {
 
@@ -32,9 +33,9 @@ public class ImgViewsActivity extends AppCompatActivity {
 
         viewPager.setAdapter(imgViewsAdapter);
 
-
         viewPager.setCurrentItem(position);
 
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
 
 
 

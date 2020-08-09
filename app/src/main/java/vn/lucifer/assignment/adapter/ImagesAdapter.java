@@ -28,52 +28,51 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesHold
     Context context;
     Photo photo;
 
-    public ImagesAdapter(List<Photo> photoList,Context context){
-        this.photoList=photoList;
-        this.context=context;
+    public ImagesAdapter(List<Photo> photoList, Context context) {
+        this.photoList = photoList;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ImagesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.rowimg,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rowimg, parent, false);
         return new ImagesHolder(view);
     }
-    public ConstraintSet set= new ConstraintSet();
+
+    private ConstraintSet set = new ConstraintSet();
+
     @Override
     public void onBindViewHolder(@NonNull ImagesHolder holder, int position) {
-
 
 
         holder.tvTitleimg.setText(photoList.get(position).getViews());
 
 
-
         //Set size
 
 
-       // String ratio = String.format(Locale.getDefault(), "%d:%d", options.outWidth, options.outHeight);
-       // set.clone(holder.mContraintLayout);
-       // set.setDimensionRatio(holder.imgImages.getId(), ratio);
-     //   set.applyTo(holder.mContraintLayout);
-
+        // String ratio = String.format(Locale.getDefault(), "%d:%d", options.outWidth, options.outHeight);
+        // set.clone(holder.mContraintLayout);
+        // set.setDimensionRatio(holder.imgImages.getId(), ratio);
+        //   set.applyTo(holder.mContraintLayout);
 
 
         int width = Integer.parseInt(photoList.get(position).getWidthM());
-        int height=Integer.parseInt(photoList.get(position).getHeightM());
-        if (photoList.get(position).getUrlL()==""){
+        int height = Integer.parseInt(photoList.get(position).getHeightM());
+        if (photoList.get(position).getUrlM() == null) {
             int width1 = Integer.parseInt(photoList.get(position).getWidthC());
-            int height1=Integer.parseInt(photoList.get(position).getHeightC());
-            String  ratio1 =String.format("%d:%d",width1,height1);
+            int height1 = Integer.parseInt(photoList.get(position).getHeightC());
+            String ratio1 = String.format("%d:%d", width1, height1);
             set.clone(holder.mContraintLayout);
             set.setDimensionRatio(holder.imgImages.getId(), ratio1);
             set.applyTo(holder.mContraintLayout);
             Glide.with(context).load(photoList.get(position).getUrlC()).into(holder.imgImages);
         }
-       String  ratio =String.format("%d:%d",width,height);
+        String ratio = String.format("%d:%d", width, height);
         set.clone(holder.mContraintLayout);
         set.setDimensionRatio(holder.imgImages.getId(), ratio);
-      set.applyTo(holder.mContraintLayout);
+        set.applyTo(holder.mContraintLayout);
         Glide.with(context).load(photoList.get(position).getUrlM()).into(holder.imgImages);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +90,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesHold
     public int getItemCount() {
         return photoList.size();
     }
+
     @Override
     public long getItemId(int position) {
         return position;
@@ -105,11 +105,12 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesHold
         ImageView imgImages;
         TextView tvTitleimg;
         ConstraintLayout mContraintLayout;
+
         public ImagesHolder(@NonNull View itemView) {
             super(itemView);
-            imgImages=itemView.findViewById(R.id.imgImages);
-            tvTitleimg=itemView.findViewById(R.id.tvTitleimg);
-            mContraintLayout=itemView.findViewById(R.id.mContraintLayout);
+            imgImages = itemView.findViewById(R.id.imgImages);
+            tvTitleimg = itemView.findViewById(R.id.tvTitleimg);
+            mContraintLayout = itemView.findViewById(R.id.mContraintLayout);
 
         }
     }

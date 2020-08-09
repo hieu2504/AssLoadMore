@@ -21,7 +21,6 @@ public class GalleriesAdapter extends RecyclerView.Adapter<GalleriesAdapter.Gall
 
     private List<Gallery> galleryList;
     Context context;
-    Gallery gallery;
 
     public GalleriesAdapter(List<Gallery> galleryList,Context context){
         this.galleryList=galleryList;
