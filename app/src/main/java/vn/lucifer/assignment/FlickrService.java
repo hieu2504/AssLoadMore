@@ -3,6 +3,7 @@ package vn.lucifer.assignment;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
+import vn.lucifer.assignment.model.CommentExample;
 import vn.lucifer.assignment.model.Example;
 import vn.lucifer.assignment.model.FavouriteExample;
 import vn.lucifer.assignment.model.ImgExample;
@@ -37,4 +38,12 @@ public interface FlickrService {
                                    @Query("method") String method,
                                    @Query("page") int page,
                                    @Query("per_page") int per_page);
+
+    @GET("services/rest/")
+    Call<CommentExample> getListComment(@Query("api_key") String api_key,
+                                       @Query("photo_id") String photo_id,
+                                       @Query("nojsoncallback") String nojsoncallback,
+                                       @Query("format") String format,
+                                       @Query("method") String method
+                                       );
 }

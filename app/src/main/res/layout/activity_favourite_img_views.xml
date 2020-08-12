@@ -28,7 +28,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu_openDirection="up">
-
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_comment_24"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title3"
+            app:fab_size="mini" />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/action4"
             android:layout_width="wrap_content"

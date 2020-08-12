@@ -13,4 +13,77 @@
         android:layout_height="match_parent" >
 
     </androidx.viewpager.widget.ViewPager>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/floatingActionMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu_openDirection="up">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action6G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_comment_24"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title3"
+            app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action4G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_share_24"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title3"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action5G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_image_24"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title3"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action1G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title1"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action2G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title2"
+            app:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/action3G"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_down"
+            app:fab_colorNormal="#ffffff"
+            app:fab_colorPressed="#000000"
+            app:fab_label="title3"
+            app:fab_size="mini" />
+    </com.github.clans.fab.FloatingActionMenu>
 </androidx.constraintlayout.widget.ConstraintLayout>

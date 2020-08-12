@@ -1,5 +1,6 @@
 package vn.lucifer.assignment.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,19 +20,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import vn.lucifer.assignment.R;
 import vn.lucifer.assignment.activity.FavouriteImgViewsActivity;
 import vn.lucifer.assignment.model.Photo;
 
-public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.FavouriteHolder> {
+public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.FavouriteHolder>{
 
     private List<Photo> photoListF;
+    private List<Photo> photoListFAll;
     private Context context;
     public FavouriteAdapter(Context context,List<Photo> photoListF){
         this.context=context;
         this.photoListF=photoListF;
+        photoListFAll=new ArrayList<>(photoListF);
     }
     @NonNull
     @Override
@@ -68,7 +74,11 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
                 bundle.putInt("position",position);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+                ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
             }
+
+
         });
 
     }
@@ -77,6 +87,12 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Favo
     public int getItemCount() {
         return photoListF.size();
     }
+    public void filterList(List<Photo> newList){
+        photoListF = newList;
+        notifyDataSetChanged();
+    }
+
+
 
     public class FavouriteHolder extends RecyclerView.ViewHolder {
         private ConstraintLayout mConstraitLayoutF;

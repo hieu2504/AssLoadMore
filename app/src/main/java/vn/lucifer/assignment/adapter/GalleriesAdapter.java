@@ -44,6 +44,7 @@ public class GalleriesAdapter extends RecyclerView.Adapter<GalleriesAdapter.Gall
                 Bundle bundle=new Bundle();
 
                 bundle.putString("galleryid",galleryList.get(position).getGalleryId());
+                bundle.putString("name",galleryList.get(position).getTitle().getContent());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
 

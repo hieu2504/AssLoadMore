@@ -44,7 +44,8 @@ public class FavouriteActivity extends AppCompatActivity {
     private EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
     private SwipeRefreshLayout srlRefeshFavou;
     private RecyclerView rvFavourite;
-    public static List<Photo> photoListF;
+    public static List<Photo> photoListF=new ArrayList<>();
+    List<Photo> mDataFitered = new ArrayList();
     private FavouriteAdapter favouriteAdapter;
     private ProgressBar progressBar;
     private int pages = 1;
@@ -59,6 +60,7 @@ public class FavouriteActivity extends AppCompatActivity {
         srlRefeshFavou = findViewById(R.id.srlRefeshFavou);
         rvFavourite = findViewById(R.id.rvFavourite);
         progressBar = findViewById(R.id.progressBarF);
+
         String po = "null";
         try {
             Intent intent = getIntent();
@@ -118,7 +120,8 @@ public class FavouriteActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.favourite_menu, menu);
         MenuItem search = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) search.getActionView();
-        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setQueryHint("Name images...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -128,6 +131,7 @@ public class FavouriteActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String s) {
 
+                filterData(s);
                 return false;
             }
         });
@@ -143,6 +147,24 @@ public class FavouriteActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void filterData(String text) {
+        List<Photo> newList = new ArrayList<>();
+        if (text.isEmpty()) {
+            favouriteAdapter.filterList(mDataFitered);
+            photoListF = mDataFitered;
+            favouriteAdapter.notifyDataSetChanged();
+        } else {
+            for (Photo item : mDataFitered) {
+                if (item.getTitle().toLowerCase().contains(text.toLowerCase())) {
+                    newList.add(item);
+                }
+            }
+            favouriteAdapter.filterList(newList);
+            photoListF = newList;
+            favouriteAdapter.notifyDataSetChanged();
+        }
     }
 
     private void FavouriteRetrofitImages() {

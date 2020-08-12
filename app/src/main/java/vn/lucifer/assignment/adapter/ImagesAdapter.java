@@ -1,5 +1,6 @@
 package vn.lucifer.assignment.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -81,6 +82,7 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ImagesHold
                 Intent intent = new Intent(context, ImgViewsActivity.class);
                 intent.putExtra("position", position);
                 context.startActivity(intent);
+                ((Activity)context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             }
         });
 

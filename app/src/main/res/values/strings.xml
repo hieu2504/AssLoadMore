@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Assignment</string>
+
+    <string name="facebook_app_id">2745402338859326</string>
+    <string name="fb_login_protocol_scheme">fb2745402338859326</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Favou">Favourite</string>
+    <string name="gallery">Galleries</string>
 </resources>

@@ -101,6 +101,8 @@ public class ImagesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle  bundle = intent.getExtras();
         String galleryid = bundle.getString("galleryid");
+        String name=bundle.getString("name");
+        setTitle(name);
         MyRetrofitBuilder.getInstance().
                 getListImages(KEY_TOKEN, galleryid, FULL_EXTRAS, "1", "json", GET_IMAGES,pages,10)
                 .enqueue(new Callback<ImgExample>() {
